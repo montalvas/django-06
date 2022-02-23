@@ -2,9 +2,9 @@ from django.db import models
 
 
 class Base(models.Model):
-    created = models.DateField(auto_now_add=True)
-    updated = models.DateField(auto_now=True)
-    activated = models.BooleanField(default=True)
+    created = models.DateField('Criado', auto_now_add=True)
+    updated = models.DateField('Atualizado', auto_now=True)
+    activated = models.BooleanField('Ativo', default=True)
     
     class Meta:
         abstract = True
@@ -26,7 +26,7 @@ class Activity(Base):
     points = models.DecimalField('Pontos', decimal_places=1, max_digits=4)
     details = models.CharField('Detalhes', max_length=100)
     
-    field = models.ForeignKey(Field, on_delete=models.PROTECT)
+    field = models.ForeignKey(Field, on_delete=models.PROTECT, verbose_name='Campo')
     
     class Meta:
         verbose_name = 'Atividade'
