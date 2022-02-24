@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import FieldCreate, ActivityCreate
 from .views import FieldUpdate, ActivityUpdate
+from .views import FieldDelete, ActivityDelete
 
 app_name = 'records'
 
@@ -14,4 +15,6 @@ urlpatterns = [
     path('update/activity/<int:pk>', ActivityUpdate.as_view(), name='update-activity'),
     
     # delete
+    path('delete/field/<int:pk>', FieldDelete.as_view(), name='delete-field'),
+    path('delete/activity/<int:pk>', ActivityDelete.as_view(), name='delete-activity'),
 ]
