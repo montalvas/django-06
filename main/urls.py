@@ -21,5 +21,5 @@ urlpatterns = [
     # página do projeto
     path('', include('website.urls', namespace='website')),
     # dados
-    path('register/', include('register.urls', namespace='register')),
+    path('records/', include('records.urls', namespace='records')),
 ]
