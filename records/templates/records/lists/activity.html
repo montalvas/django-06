@@ -1,0 +1,44 @@
+{% extends 'website/_layouts/modelo-ifpr.html' %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="mb-4">Lista de atividades registradas</h3>
+
+<a class="btn btn-primary mb-3" href="{% url 'records:register-activity' %}">Cadastrar</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Descrição</th>
+            <th>Pontos</th>
+            <th>Detalhes</th>
+            <th>Campo</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for activity in activities %}
+        <tr>
+            <td>{{ activity.number }}</td>
+            <td>{{ activity.description }}</td>
+            <td>{{ activity.points }}</td>
+            <td>{{ activity.details }}</td>
+            <td>{{ activity.field }}</td>
+            <td>
+                <a class="btn btn-warning" href="{% url 'records:update-activity' activity.id %}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-danger" href="{% url 'records:delete-activity' activity.id %}">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="5"><strong>Nenhuma informação cadastrada</strong></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

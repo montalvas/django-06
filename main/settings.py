@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # My apps
     'website',
     'records',
+    # Libraries
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+# Crispy_forms
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
