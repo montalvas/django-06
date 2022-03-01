@@ -82,14 +82,8 @@
                                 Cadastros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
-                                <a class="dropdown-item" href="#">Cidades</a>
-                                <a class="dropdown-item" href="#">Estados</a>
-                                <a class="dropdown-item" href="#">Campus</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{% url 'records:list-field' %}">Campos</a>
                                 <a class="dropdown-item" href="{% url 'records:list-activity' %}">Atividades</a>
-
                             </div>
                         </li>
                         {% endif %}
@@ -125,7 +119,7 @@
                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                     Alterar senha</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{% url 'auth:logout' %}">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     Sair</a>
                             </div>
@@ -138,7 +132,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{% url 'auth:login' %}">
                                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                                 Login
                             </a>
@@ -162,41 +156,6 @@
     </main>
 
     <footer class="mt-auto">
-
-        <!-- Bloco acima do rodapé com links -->
-        {% block footer-links %}
-        <div class="container-fluid bg-ifpr text-white p-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <h5>O Município</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Link 1</a></li>
-                            <li><a href="#" class="text-white">Link 2</a></li>
-                            <li><a href="#" class="text-white">Link 3</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm">
-                        <h5>Serviços</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Link 1</a></li>
-                            <li><a href="#" class="text-white">Link 2</a></li>
-                            <li><a href="#" class="text-white">Link 3</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm">
-                        <h5>Acesso rápido</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Link 1</a></li>
-                            <li><a href="#" class="text-white">Link 2</a></li>
-                            <li><a href="#" class="text-white">Link 3</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endblock footer-links %}
-
 
         <!-- Rodapé -->
         {% block footer %}

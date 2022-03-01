@@ -1,0 +1,24 @@
+{% extends 'website/_layouts/modelo-ifpr.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block menu %}{% endblock menu %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4 mx-auto">
+
+        <h3 class="mb-4">Autenticação</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <input class="btn btn-success" type="submit" value="Login">
+        
+        </form>
+    </div>
+</div>
+{% endblock content %}

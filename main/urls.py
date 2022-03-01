@@ -22,4 +22,6 @@ urlpatterns = [
     path('', include('website.urls', namespace='website')),
     # dados
     path('records/', include('records.urls', namespace='records')),
+    # users
+    path('auth/', include('users.urls', namespace='auth'))
 ]

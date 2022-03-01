@@ -10,21 +10,22 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>Campo</th>
             <th>Número</th>
             <th>Descrição</th>
             <th>Pontos</th>
             <th>Detalhes</th>
-            <th>Campo</th>
+            <th>Opções</th>
         </tr>
     </thead>
     <tbody>
     {% for activity in activities %}
         <tr>
+            <td>{{ activity.field }}</td>
             <td>{{ activity.number }}</td>
             <td>{{ activity.description }}</td>
             <td>{{ activity.points }}</td>
             <td>{{ activity.details }}</td>
-            <td>{{ activity.field }}</td>
             <td>
                 <a class="btn btn-warning" href="{% url 'records:update-activity' activity.id %}">
                     <i class="fa fa-pencil" aria-hidden="true"></i>

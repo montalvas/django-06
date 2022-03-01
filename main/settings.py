@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # My apps
     'website',
     'records',
+    'users',
     # Libraries
     'crispy_forms',
 ]
@@ -128,5 +129,10 @@ STATICFILES_DIRS = [
 ]
 
 # Crispy_forms
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Configurações de autenticação
+LOGIN_REDIRECT_URL = 'website:index'
+LOGOUT_REDIRECT_URL = 'auth:login'
+LOGIN_URL = 'auth:login'
+
