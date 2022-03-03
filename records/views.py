@@ -1,19 +1,25 @@
 from django.views.generic import CreateView, UpdateView
 from django.views.generic import DeleteView, ListView
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from braces.views import GroupRequiredMixin
+
 from .models import Field, Activity
+
 from django.urls import reverse_lazy
 
 
 ################ CREATE ################
 
-class FieldCreate(LoginRequiredMixin, CreateView):   
+class FieldCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+    group_required = u"Administrador" 
     model = Field
     fields = ['name', 'description']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-field')
     
-class ActivityCreate(LoginRequiredMixin, CreateView):
+class ActivityCreate(GroupRequiredMixin ,LoginRequiredMixin, CreateView):
+    group_required = u"Administrador" 
     model = Activity
     fields = ['number', 'description', 'points', 'details', 'field']
     template_name = 'records/form.html'
@@ -21,13 +27,15 @@ class ActivityCreate(LoginRequiredMixin, CreateView):
     
 ################ UPDATE ################
 
-class FieldUpdate(LoginRequiredMixin, UpdateView):
+class FieldUpdate(GroupRequiredMixin ,LoginRequiredMixin, UpdateView):
+    group_required = u"Administrador" 
     model = Field
     fields = ['name', 'description']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-field')
     
-class ActivityUpdate(LoginRequiredMixin, UpdateView):
+class ActivityUpdate(GroupRequiredMixin ,LoginRequiredMixin, UpdateView):
+    group_required = u"Administrador" 
     model = Activity
     fields = ['number', 'description', 'points', 'details', 'field']
     template_name = 'records/form.html'
@@ -35,12 +43,14 @@ class ActivityUpdate(LoginRequiredMixin, UpdateView):
     
 ################ DELETE ################
 
-class FieldDelete(LoginRequiredMixin, DeleteView):
+class FieldDelete(GroupRequiredMixin ,LoginRequiredMixin, DeleteView):
+    group_required = u"Administrador" 
     model = Field 
     template_name = 'records/form-delete.html'
     success_url = reverse_lazy('records:list-field')
     
-class ActivityDelete(LoginRequiredMixin, DeleteView):
+class ActivityDelete(GroupRequiredMixin ,LoginRequiredMixin, DeleteView):
+    group_required = u"Administrador" 
     model = Activity
     template_name = 'records/form-delete.html'
     success_url = reverse_lazy('records:list-activity')
