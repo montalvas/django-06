@@ -82,8 +82,17 @@
                                 Cadastros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{% url 'records:list-city' %}">Cidades</a>
+                                <a class="dropdown-item" href="{% url 'records:list-state' %}">Estados</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'records:list-status' %}">Status</a>
+                                <a class="dropdown-item" href="{% url 'records:list-situation' %}">Situações</a>
+                                <a class="dropdown-item" href="{% url 'records:list-campus' %}">Campus</a>
+                                <a class="dropdown-item" href="{% url 'records:list-grade' %}">Classes</a>
+                                <a class="dropdown-item" href="{% url 'records:list-progression' %}">Progressões</a>
                                 <a class="dropdown-item" href="{% url 'records:list-field' %}">Campos</a>
                                 <a class="dropdown-item" href="{% url 'records:list-activity' %}">Atividades</a>
+                                <a class="dropdown-item" href="{% url 'records:list-receipt' %}">Comprovantes</a>
                             </div>
                         </li>
                         {% endif %}

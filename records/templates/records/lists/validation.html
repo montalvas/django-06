@@ -1,0 +1,44 @@
+{% extends 'website/_layouts/modelo-ifpr.html' %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="mb-4">Lista de validações registradas</h3>
+
+<a class="btn btn-primary mb-3" href="{% url 'records:register-validation' %}">Cadastrar</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Recibo</th>
+            <th>Validado em</th>
+            <th>Validado por</th>
+            <th>Quantidade</th>
+            <th>Justificativa</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for validation in validations %}
+        <tr>
+            <td>{{ validation.receipt }}</td>
+            <td>{{ validation.validated_in }}</td>
+            <td>{{ validation.validated_by }}</td>
+            <td>{{ validation.quantity }}</td>
+            <td>{{ validation.justification }}</td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="{% url 'records:update-validation' validation.id %}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" href="{% url 'records:delete-validation' validation.id %}">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="5"><strong>Nenhuma informação cadastrada</strong></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

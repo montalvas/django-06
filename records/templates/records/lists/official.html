@@ -1,0 +1,41 @@
+{% extends 'website/_layouts/modelo-ifpr.html' %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="mb-4">Lista de servidores registrados</h3>
+
+<a class="btn btn-primary mb-3" href="{% url 'records:register-official' %}">Cadastrar</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome Completo</th>
+            <th>Siape</th>
+            <th>Campus</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for official in officials %}
+        <tr>
+            <td>{{ official.full_name }}</td>
+            <td>{{ official.siape }}</td>
+            <td>{{ official.campus }}</td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="{% url 'records:update-official' official.id %}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" href="{% url 'records:delete-official' official.id %}">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="5"><strong>Nenhuma informação cadastrada</strong></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
