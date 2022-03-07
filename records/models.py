@@ -134,7 +134,7 @@ class Receipt(models.Model):
     initial_date = models.DateField('Data inicial')
     final_date = models.DateField('Data final', null=True, blank=True, help_text='Informar apenas se o comprovante for relativo a um período.')
     file = models.FileField(upload_to='pdf/')
-    user = models.ForeignKey(User, on_delete='models.PROTECT')
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     
     class Meta:
         verbose_name = 'Comprovante'

@@ -4,11 +4,14 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<h3>{{ title }}</h3>
+
 <form method="post">{% csrf_token %}
     {{ form|crispy }}
 
     <input class="btn btn-primary" type="submit" value="Cadastrar">
-    
+    {% autoescape on %}
     <a class="btn btn-secondary" href="{% url 'website:index' %}">Voltar</a>
+    {% endautoescape %}
 </form>
 {% endblock content %}
