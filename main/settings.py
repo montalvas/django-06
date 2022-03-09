@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     # Libraries
     'crispy_forms',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -135,4 +136,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'website:index'
 LOGOUT_REDIRECT_URL = 'auth:login'
 LOGIN_URL = 'auth:login'
+
+# Aruivos de Media/Upload
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/uploads/'
 

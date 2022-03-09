@@ -164,8 +164,13 @@ class ReceiptCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
     model = Receipt
     fields = ['progression', 'activity', 'quantity', 'initial_date', 'final_date', 'file']
-    template_name = 'records/form.html'
+    template_name = 'records/form-upload.html'
     success_url = reverse_lazy('records:list-receipt')
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        
+        return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -342,7 +347,7 @@ class ReceiptUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
     model = Receipt
     fields = ['progression', 'activity', 'quantity', 'initial_date', 'final_date', 'file']
-    template_name = 'records/form.html'
+    template_name = 'records/form-upload.html'
     success_url = reverse_lazy('records:list-progression')
     
     def get_context_data(self, **kwargs):
