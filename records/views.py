@@ -23,7 +23,8 @@ class FieldCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'Cadastrar Campo Novo'
+        context["title"] = 'Cadastrar Campo'
+        context['link'] = "records:list-field"
         
         return context
     
@@ -35,12 +36,26 @@ class ActivityCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-activity')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Atividade'
+        context['link'] = "records:list-activity"
+        
+        return context
+    
 class StateCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
     model = State
     fields = ['name', 'uf']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-state')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Estado'
+        context['link'] = "records:list-state"
+        
+        return context
     
 class CityCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
@@ -49,12 +64,26 @@ class CityCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-city')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Cidade'
+        context['link'] = "records:list-city"
+        
+        return context
+    
 class CampusCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
     model = Campus
     fields = ['name', 'city', 'address', 'phone']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-campus')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Campus'
+        context['link'] = "records:list-campus"
+        
+        return context
     
 class OfficialCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
@@ -63,12 +92,26 @@ class OfficialCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-official')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Servidor'
+        context['link'] = "records:list-official"
+        
+        return context
+    
 class StatusCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
     model = Status
     fields = ['name', 'description']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-status')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Status'
+        context['link'] = "records:list-status"
+        
+        return context
 
 class SituationCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
@@ -77,12 +120,26 @@ class SituationCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-situation')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Situação'
+        context['link'] = "records:list-situation"
+        
+        return context
+    
 class GradeCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
     model = Grade
     fields = ['name', 'level', 'description']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-grade')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Classe'
+        context['link'] = "records:list-grade"
+        
+        return context
     
 class ProgressionCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
@@ -96,12 +153,26 @@ class ProgressionCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
         
         return super().form_valid(form)
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Progressão'
+        context['link'] = "records:list-progression"
+        
+        return context
+    
 class ReceiptCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
     model = Receipt
     fields = ['progression', 'activity', 'quantity', 'initial_date', 'final_date', 'file']
     template_name = 'records/form.html'
-    success_url = reverse_lazy('records:list-progression')
+    success_url = reverse_lazy('records:list-receipt')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Recibo'
+        context['link'] = "records:list-receipt"
+        
+        return context
     
 class ValidationCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     group_required = u"Administrador" 
@@ -110,7 +181,13 @@ class ValidationCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-progression')
     
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Cadastrar Validação'
+        context['link'] = "records:list-validation"
+        
+        return context
+    
 ################ UPDATE ################
 
 
@@ -121,12 +198,26 @@ class FieldUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-field')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Campo'
+        context['link'] = "records:list-field"
+        
+        return context
+    
 class ActivityUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
     model = Activity
     fields = ['number', 'description', 'points', 'details', 'field']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-activity')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Atividade'
+        context['link'] = "records:list-activity"
+        
+        return context
     
 class StateUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
@@ -135,12 +226,26 @@ class StateUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-state')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Estado'
+        context['link'] = "records:list-state"
+        
+        return context
+    
 class CityUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
     model = City
     fields = ['name', 'state']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-city')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Cidade'
+        context['link'] = "records:list-city"
+        
+        return context
     
 class CampusUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
@@ -149,6 +254,13 @@ class CampusUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-campus')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Campus'
+        context['link'] = "records:list-campus"
+        
+        return context
+    
 class OfficialUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
     model = Official
@@ -156,12 +268,26 @@ class OfficialUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-official')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Servidor'
+        context['link'] = "records:list-official"
+        
+        return context
+    
 class StatusUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
     model = Status
     fields = ['name', 'description']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-status')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Status'
+        context['link'] = "records:list-status"
+        
+        return context
 
 class SituationUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
@@ -170,12 +296,26 @@ class SituationUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-situation')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Situação'
+        context['link'] = "records:list-situation"
+        
+        return context
+    
 class GradeUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
     model = Grade
     fields = ['name', 'level', 'description']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-grade')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Classe'
+        context['link'] = "records:list-grade"
+        
+        return context
     
 class ProgressionUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
@@ -191,6 +331,13 @@ class ProgressionUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
                                         )
         return self.object
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Progressão'
+        context['link'] = "records:list-progression"
+        
+        return context
+    
 class ReceiptUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
     model = Receipt
@@ -198,12 +345,26 @@ class ReceiptUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-progression')
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Recibo'
+        context['link'] = "records:list-receipt"
+        
+        return context
+    
 class ValidationUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     group_required = u"Administrador" 
     model = Validation
     fields = ['quantity', 'justification']
     template_name = 'records/form.html'
     success_url = reverse_lazy('records:list-progression')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Atualizar Validação'
+        context['link'] = "records:list-validation"
+        
+        return context
     
 
 ################ DELETE ################
