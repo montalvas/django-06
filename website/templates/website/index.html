@@ -3,5 +3,12 @@
 
 {% block content %}
     <h3>Página inicial</h3>
+
+    {% if user.profile.full_name %}
+    <p>Bem-vindo ao sistema, {{ user.profile.full_name }}</p>
+    {% else %}
+    <p>Você precisa completar seu cadastro. Acesse os <a href="{% url 'auth:update-profile' %}">meus dados</a> para atualizar
+    {% endif %}
+    
     
 {% endblock content %}

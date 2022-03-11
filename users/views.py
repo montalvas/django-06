@@ -1,10 +1,11 @@
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.models import User, Group
 
 from .forms import UserForm
+from .models import Profile
 
 
 class UserCreate(CreateView):
@@ -18,4 +19,22 @@ class UserCreate(CreateView):
         url = super().form_valid(form)
         self.object.groups.add(group)
         
+        Profile.objects.create(user=self.object)
+        
         return url
+
+class ProfileUpdate(UpdateView):
+    template_name = 'records/form.html'
+    model = Profile
+    fields = ['full_name', 'cpf', 'phone']
+    success_url = reverse_lazy('website:index')
+    
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Profile, user=self.request.user)
+        return self.object
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Atualizar Perfil'
+        context['link'] = 'website:index'
+        
+        return context

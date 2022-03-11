@@ -121,7 +121,7 @@
                                 <span id="username">{{ request.user }}</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{% url 'auth:update-profile' %}">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     Meus dados</a>
                                 <a class="dropdown-item" href="#">
