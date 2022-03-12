@@ -3,11 +3,11 @@
 
 {% block content %}
 
-<h3 class="mb-4">Lista de atividades registradas</h3>
+<h3 class="mb-3">Lista de atividades registradas</h3>
 
-<a class="btn btn-primary mb-3" href="{% url 'records:register-activity' %}">Cadastrar</a>
+<a class="btn btn-primary mb-4" href="{% url 'records:register-activity' %}">Cadastrar</a>
 
-<table class="table table-striped">
+<table class="table table-striped" id="table-list">
     <thead>
         <tr>
             <th>Campo</th>
@@ -43,3 +43,5 @@
     </tbody>
 </table>
 {% endblock content %}
+
+{% block scripts %}{% endblock scripts %}
